@@ -32,11 +32,13 @@ jobs:
 
       - name: Set up Docker
         run: |
-          docker-compose -f docker-compose.yml up -d --build  # Запускаем контейнеры
+          docker-compose up -d --build
+          docker exec -it backend ip link
+          docker exec -it backend make firstUp
 
       - name: Run tests
         run: |
-          docker-compose -f docker-compose.yml exec backend ./vendor/bin/phpunit  # Запускаем тесты
+          docker exec backend php artisan test
 
       - name: Cleanup
         run: |
