@@ -17,7 +17,7 @@ class CreateProductValidationFailureTest extends TestCase
             'description' => 'Описание тестового продукта',
             'price' => 99.99,
         ];
-        $response = $this->postJson('/products/create', $data);
+        $response = $this->postJson('/api/products/create', $data);
         $response->assertStatus(422);
         $response->assertJsonValidationErrors(['name']);
         $this->assertEquals(
@@ -33,7 +33,7 @@ class CreateProductValidationFailureTest extends TestCase
             'name' => 'Тестовый продукт',
             'price' => 99.99,
         ];
-        $response = $this->postJson('/products/create', $data);
+        $response = $this->postJson('/api/products/create', $data);
         $response->assertStatus(422);
         $response->assertJsonValidationErrors(['description']);
         $this->assertEquals(
@@ -49,7 +49,7 @@ class CreateProductValidationFailureTest extends TestCase
             'name' => 'Тестовый продукт',
             'description' => 'Описание тестового продукта',
         ];
-        $response = $this->postJson('/products/create', $data);
+        $response = $this->postJson('/api/products/create', $data);
         $response->assertStatus(422);
         $response->assertJsonValidationErrors(['price']);
         $this->assertEquals(
@@ -66,7 +66,7 @@ class CreateProductValidationFailureTest extends TestCase
             'description' => 'Описание тестового продукта',
             'price' => 'девяносто девять',
         ];
-        $response = $this->postJson('/products/create', $data);
+        $response = $this->postJson('/api/products/create', $data);
         $response->assertStatus(422);
         $response->assertJsonValidationErrors(['price']);
         $this->assertEquals(
@@ -83,7 +83,7 @@ class CreateProductValidationFailureTest extends TestCase
             'description' => 'Описание тестового продукта',
             'price' => -1,
         ];
-        $response = $this->postJson('/products/create', $data);
+        $response = $this->postJson('/api/products/create', $data);
         $response->assertStatus(422);
         $response->assertJsonValidationErrors(['price']);
         $this->assertEquals(
@@ -101,7 +101,7 @@ class CreateProductValidationFailureTest extends TestCase
             'price' => 99.99,
             'category_id' => 'нечисло',
         ];
-        $response = $this->postJson('/products/create', $data);
+        $response = $this->postJson('/api/products/create', $data);
         $response->assertStatus(422);
         $response->assertJsonValidationErrors(['category_id']);
         $this->assertEquals(

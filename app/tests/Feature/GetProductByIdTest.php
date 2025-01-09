@@ -12,7 +12,7 @@ class GetProductByIdTest extends TestCase
     public function test_get_product_by_id()
     {
         $product = Product::factory()->create();
-        $response = $this->getJson("/products/{$product->id}");
+        $response = $this->getJson("/api/products/{$product->id}");
         $response->assertStatus(200);
         $response->assertJson([
             'id' => $product->id,

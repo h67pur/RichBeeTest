@@ -14,7 +14,7 @@ class GetAllProductsTest extends TestCase
     {
         $products = Product::factory()->count(1000)->create();
 
-        $response = $this->getJson('/products');
+        $response = $this->getJson('/api/products');
         $response->assertStatus(200);
         $response->assertJsonCount(1000);
         $responseData = $response->json();

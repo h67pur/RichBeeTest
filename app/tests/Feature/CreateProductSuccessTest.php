@@ -18,7 +18,7 @@ class CreateProductSuccessTest extends TestCase
             'price' => 99.99,
         ];
 
-        $response = $this->postJson('/products/create', $data);
+        $response = $this->postJson('/api/products/create', $data);
 
         $response->assertStatus(201);
 
