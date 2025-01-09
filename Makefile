@@ -15,3 +15,6 @@ migrate:
 
 rollback:
 	docker exec backend php artisan migrate:rollback
+
+test:
+	docker exec backend php artisan test
