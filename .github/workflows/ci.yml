@@ -26,7 +26,10 @@ jobs:
 
       - name: Build and run containers
         run: |
-          make start
+          docker-compose down -v
+          docker-compose up -d --build
+          docker exec backend ip link
+          docker exec backend make firstUp
 
       - name: Wait for database to be ready
         run: |
