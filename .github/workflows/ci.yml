@@ -31,13 +31,6 @@ jobs:
           docker exec backend ip link
           docker exec backend make firstUp
 
-      - name: Wait for database to be ready
-        run: |
-          until docker exec backend psql -U postgres -d postgres -c '\q'; do
-            echo "Waiting for PostgreSQL..."
-            sleep 2
-          done
-
       - name: Run tests
         run: |
           make test
