@@ -1,7 +1,7 @@
 # Учебный проект по тестированию в Laravel
-[Спонсор данного мероприятия: RichBee](https://richbee.ru/)
-<a href="https://richbee.ru/" style="display:inline-block;">
-<img src="app/public/RB_Logo.jpeg" alt="RichBee Logo" style="width: 50px; height: auto; vertical-align: middle;"/>
+Спонсор данного мероприятия:  
+<a href="https://richbee.ru/" style="display:inline-block; vertical-align: middle; text-align: center;">
+<img src="app/public/RB_Logo.jpeg" alt="RichBee Logo" style="width: 50px; height: auto; margin: 0 5px;"/>
 </a>
 
 ## Описание проекта
