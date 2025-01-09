@@ -12,3 +12,6 @@ up:
 
 migrate:
 	docker exec backend php artisan migrate
+
+rollback:
+	docker exec backend php artisan migrate:rollback
