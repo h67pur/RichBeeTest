@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Handlers\CreateProductHandler;
 use App\Http\Requests\ProductStoreRequest;
 use App\Models\Product;
 use App\Services\ProductService;
@@ -14,10 +15,14 @@ class ProductController extends Controller
         return response()->json(ProductService::getAllProducts());
     }
 
-    public function store(ProductStoreRequest $request): JsonResponse
+    public function store(ProductStoreRequest $request, CreateProductHandler $handler): JsonResponse
     {
-        $validatedData = $request->validated();
-        return response()->json(ProductService::createProduct($validatedData), 201);
+        $product = $handler->handle($request->getDto());
+
+        return response()->json([
+            'message' => 'Продукт создан.',
+            'data' => $product
+        ], 201);
     }
 
     public function show(Product $product): JsonResponse

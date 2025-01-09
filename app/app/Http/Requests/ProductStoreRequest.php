@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\DTO\CreateProductDTO;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ProductStoreRequest extends FormRequest
@@ -52,5 +53,10 @@ class ProductStoreRequest extends FormRequest
             'category_id.integer' => 'Категория продукта должна быть целым числом.',
             'category_id.exists' => 'Такой продукт не существует в выбранной категории.',
         ];
+    }
+
+    public function getDto(): CreateProductDTO
+    {
+        return CreateProductDTO::fromArray($this->validated());
     }
 }

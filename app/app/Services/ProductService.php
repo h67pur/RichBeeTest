@@ -13,9 +13,4 @@ class ProductService
     {
         return Product::all();
     }
-
-    public static function createProduct(array $data) : Builder|Model
-    {
-        return Product::query()->create($data);
-    }
 }
