@@ -9,6 +9,7 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libxml2-dev \
     libxslt-dev \
+    postgresql-client \
     && docker-php-ext-install exif pdo pdo_pgsql pdo_mysql zip xmlwriter
 
 RUN a2enmod rewrite ssl
