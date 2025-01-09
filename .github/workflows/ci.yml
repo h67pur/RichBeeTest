@@ -28,7 +28,7 @@ jobs:
 
       - name: Set up Docker environment
         run: |
-          docker build -t myapp docker-compose.yml
+          docker build -t myapp .
           docker run -d --name myapp -p 8080:80 myapp
 
       - name: Wait for the database to be ready
