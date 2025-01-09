@@ -1,0 +1,12 @@
+.env
+data
+idea
+.idea/dataSources.xml
+.idea/ERP-rkraski.iml
+.idea/phpunit.xml
+.idea/codeception.xml
+.idea/phpspec.xml
+.DS_Store
+./docker-compose.yml
+.idea/php.xml
+.code/
