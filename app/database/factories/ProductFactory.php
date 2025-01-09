@@ -17,7 +17,6 @@ class ProductFactory extends Factory
      */
     public function definition(): array
     {
-        $this->faker = \Faker\Factory::create('ru_RU');
         return [
             'name' => $this->faker->word(),
             'description' => $this->faker->sentence(),

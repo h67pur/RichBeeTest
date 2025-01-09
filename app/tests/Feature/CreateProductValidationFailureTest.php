@@ -10,7 +10,8 @@ class CreateProductValidationFailureTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_create_product_validation_failure()
+    /** @test */
+    public function name_is_required(): void
     {
         $data = [
             'description' => 'Описание тестового продукта',
@@ -23,7 +24,11 @@ class CreateProductValidationFailureTest extends TestCase
             'Имя продукта обязательно для заполнения.',
             $response->json('errors.name.0')
         );
+    }
 
+    /** @test */
+    public function description_is_required(): void
+    {
         $data = [
             'name' => 'Тестовый продукт',
             'price' => 99.99,
@@ -35,7 +40,11 @@ class CreateProductValidationFailureTest extends TestCase
             'Описание продукта обязательно для заполнения.',
             $response->json('errors.description.0')
         );
+    }
 
+    /** @test */
+    public function price_is_required(): void
+    {
         $data = [
             'name' => 'Тестовый продукт',
             'description' => 'Описание тестового продукта',
@@ -47,7 +56,11 @@ class CreateProductValidationFailureTest extends TestCase
             'Цена продукта обязательно для заполнения.',
             $response->json('errors.price.0')
         );
+    }
 
+    /** @test */
+    public function price_must_be_numeric(): void
+    {
         $data = [
             'name' => 'Тестовый продукт',
             'description' => 'Описание тестового продукта',
@@ -60,7 +73,11 @@ class CreateProductValidationFailureTest extends TestCase
             'Цена продукта должна быть числом.',
             $response->json('errors.price.0')
         );
+    }
 
+    /** @test */
+    public function price_must_be_greater_than_or_equal_to_zero(): void
+    {
         $data = [
             'name' => 'Тестовый продукт',
             'description' => 'Описание тестового продукта',
@@ -73,7 +90,11 @@ class CreateProductValidationFailureTest extends TestCase
             'Минимальная цена продукта должна быть не менее 0.',
             $response->json('errors.price.0')
         );
+    }
 
+    /** @test */
+    public function category_id_must_be_integer(): void
+    {
         $data = [
             'name' => 'Тестовый продукт',
             'description' => 'Описание тестового продукта',
@@ -88,4 +109,5 @@ class CreateProductValidationFailureTest extends TestCase
             $response->json('errors.category_id.0')
         );
     }
+
 }

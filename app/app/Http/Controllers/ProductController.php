@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductStoreRequest;
+use App\Models\Product;
 use App\Services\ProductService;
 use Illuminate\Http\JsonResponse;
 
@@ -17,5 +18,10 @@ class ProductController extends Controller
     {
         $validatedData = $request->validated();
         return response()->json(ProductService::createProduct($validatedData), 201);
+    }
+
+    public function show(Product $product): JsonResponse
+    {
+        return response()->json($product);
     }
 }
