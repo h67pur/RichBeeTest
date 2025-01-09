@@ -20,7 +20,6 @@ RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash - \
 
 WORKDIR /var/www/html
 
-COPY .env ./
 COPY ./ /var/www/html
 
 EXPOSE 80 443
