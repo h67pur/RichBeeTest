@@ -21,21 +21,32 @@ jobs:
           POSTGRES_PASSWORD: postgres
         ports:
           - 5432:5432
+        options: >  # Опциональный аргумент для указания дополнительных опций для сервиса
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up Docker
+      - name: Set up Docker environment
         run: |
-          docker-compose up -d --build
-          docker exec -it backend ip link
-          docker exec -it backend make firstUp
+          docker build -t myapp ./docker-compose.yml
+          docker run -d --name myapp -p 8080:80 myapp
+
+      - name: Wait for the database to be ready
+        run: |
+          until pg_isready -h localhost -p 5432; do
+            echo "Waiting for PostgreSQL..."
+            sleep 2
+          done
 
       - name: Run tests
         run: |
-          docker exec backend php artisan test
+          docker exec myapp ./vendor/bin/phpunit  # Запускаем тесты внутри контейнера
 
       - name: Cleanup
         run: |
-          docker-compose -f docker-compose.yml down  # Останавливаем контейнеры
+          docker stop myapp
+          docker rm myapp
