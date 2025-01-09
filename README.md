@@ -1,5 +1,6 @@
 # Учебный проект по тестированию в Laravel
-![RichBeeLogo](app/public/RB_Logo.jpeg)
+[![RichBeeLogo](app/public/RB_Logo.jpeg)](https://richbee.ru/)
+[Спонсор данного мероприятия: RichBee](https://richbee.ru/)
 ## Описание проекта
 
 Этот проект включает учебные тесты для основной логики, связанной с управлением продукцией. 
